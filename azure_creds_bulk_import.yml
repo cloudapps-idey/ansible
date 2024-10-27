@@ -32,7 +32,7 @@
         CONTROLLER_VERIFY_SSL: false
 
     - name: Create Credential
-      credential:
+      awx.awx.credential:
         name: azure_credential1
         organization: "{{ organization_id }}"
         credential_type: 8
