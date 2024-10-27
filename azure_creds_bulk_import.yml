@@ -2,7 +2,6 @@
   hosts: localhost
   module_defaults:
     ansible.builtin.uri:
-      force_basic_auth: true
       validate_certs: false
   gather_facts: no
 
