@@ -39,12 +39,11 @@
         inputs:
           client: "{{ azure_client_id }}"
           secret: "{{ azure_client_secret }}"
-          subscription: "{{ item }}"
+          subscription: "12345"
           tenant: "{{ azure_tenant_id }}"
         controller_oauthtoken: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
         controller_host: https://localhost:8443
         validate_certs: false
-      loop: "{{ subscriptions }}"
       register: create_credential_responses1
             
          
