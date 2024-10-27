@@ -44,6 +44,8 @@
         controller_username: admin
         controller_password: redhat
         controller_host: https://localhost
+      loop: "{{ subscriptions }}"
+      register: create_credential_responses1
             
          
 
@@ -71,5 +73,5 @@
 
     - name: Display results for each subscription
       debug:
-        var: create_credential_responses.results 
+        var: create_credential_responses1.results 
        
