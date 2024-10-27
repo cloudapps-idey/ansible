@@ -39,7 +39,7 @@
           description: "{{ credential_description }} for subscription {{ item }}"
           organization: "{{ organization_id }}"
           credential_type: 8  # Azure credential type ID
-          validate_certs: no
+          validate_certs: false
           inputs:
             client: "{{ azure_client_id }}"
             secret: "{{ azure_client_secret }}"
