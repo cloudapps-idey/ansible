@@ -25,6 +25,8 @@
     - name: Set API token as a variable
       set_fact:
         api_token: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
+      environment:
+        CONTROLLER_VERIFY_SSL: /etc/ssl/certs
 
     - name: Create Azure Credential for each Subscription ID in AAP Controller
       uri:
