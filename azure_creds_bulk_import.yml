@@ -8,7 +8,7 @@
 
   vars:
     # AAP Controller URL
-    aap_controller_url: "https://host1.example.com:8443"
+    aap_controller_url: "https://192.168.1.172:8443"
 
     # Base Credential parameters
     credential_name: "subscription id 1"
