@@ -41,8 +41,6 @@
           secret: "{{ azure_client_secret }}"
           subscription: "{{ item }}"
           tenant: "{{ azure_tenant_id }}"
-        controller_username: admin
-        controller_password: redhat
         controller_oauthtoken: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
         controller_host: https://localhost:8443
       loop: "{{ subscriptions }}"
