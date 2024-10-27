@@ -31,6 +31,22 @@
       environment:
         CONTROLLER_VERIFY_SSL: false
 
+     - name: Create Credential
+       credential:
+         name: azure_credential1
+         organization: "{{ organization_id }}"
+         credential_type: 8
+         inputs:
+            client: "{{ azure_client_id }}"
+            secret: "{{ azure_client_secret }}"
+            subscription: "{{ item }}"
+            tenant: "{{ azure_tenant_id }}"
+          controller_username: admin
+          controller_password: redhat
+          controller_host: https://localhost
+            
+         
+
     - name: Create Azure Credential for each Subscription ID in AAP Controller
       uri:
         url: "{{ aap_controller_url }}/api/v2/credentials/"
