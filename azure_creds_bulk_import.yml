@@ -43,6 +43,7 @@
           tenant: "{{ azure_tenant_id }}"
         controller_username: admin
         controller_password: redhat
+        controller_oauthtoken: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
         controller_host: https://localhost
       loop: "{{ subscriptions }}"
       register: create_credential_responses1
