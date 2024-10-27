@@ -41,7 +41,7 @@
           secret: "{{ azure_client_secret }}"
           subscription: "12345"
           tenant: "{{ azure_tenant_id }}"
-        controller_oauthtoken: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
+        controller_oauthtoken: ZDhlKIi7QWcOpjOPiARUuGzttoB18f
         controller_host: https://localhost:8443
         validate_certs: false
       register: create_credential_responses1
