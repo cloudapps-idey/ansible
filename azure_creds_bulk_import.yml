@@ -45,7 +45,7 @@
             secret: "{{ azure_client_secret }}"
             subscription: "{{ item }}"
             tenant: "{{ azure_tenant_id }}"
-        sttus_code: 201
+        status_code: 201
       loop: "{{ subscriptions }}"
       register: create_credential_responses
 
