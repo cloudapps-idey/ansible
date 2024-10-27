@@ -41,7 +41,6 @@
           description: "{{ credential_description }} for subscription {{ item }}"
           organization: "{{ organization_id }}"
           credential_type: 8  # Azure credential type ID
-          force_basic_auth: true
           validate_certs: false
           inputs:
             client: "{{ azure_client_id }}"
