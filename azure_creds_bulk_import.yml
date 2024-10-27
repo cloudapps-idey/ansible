@@ -1,5 +1,9 @@
 - name: Authenticate and Import Azure Resource Manager Credentials in AAP
   hosts: localhost
+  module_defaults:
+    ansible.builtin.uri:
+      force_basic_auth: true
+      validate_certs: false
   gather_facts: no
 
   vars_files:
@@ -41,7 +45,6 @@
           description: "{{ credential_description }} for subscription {{ item }}"
           organization: "{{ organization_id }}"
           credential_type: 8  # Azure credential type ID
-          validate_certs: false
           inputs:
             client: "{{ azure_client_id }}"
             secret: "{{ azure_client_secret }}"
