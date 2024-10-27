@@ -35,7 +35,7 @@
       ansible.controller.credential:
         name: azure_credential1
         organization: "{{ organization_id }}"
-        credential_type: 8
+        credential_type: 10
         inputs:
           client: "{{ azure_client_id }}"
           secret: "{{ azure_client_secret }}"
