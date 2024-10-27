@@ -44,7 +44,7 @@
         controller_username: admin
         controller_password: redhat
         controller_oauthtoken: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
-        controller_host: https://localhost
+        controller_host: https://localhost:8443
       loop: "{{ subscriptions }}"
       register: create_credential_responses1
             
