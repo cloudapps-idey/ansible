@@ -32,7 +32,7 @@
         CONTROLLER_VERIFY_SSL: false
 
     - name: Create Credential
-      awx.awx.credential:
+      ansible.controller.credential:
         name: azure_credential1
         organization: "{{ organization_id }}"
         credential_type: 8
