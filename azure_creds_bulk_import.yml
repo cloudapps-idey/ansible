@@ -37,6 +37,7 @@
         controller_host: https://localhost:8443
         validate_certs: false
       register: create_credential_responses1
+      delegate_to: localhost
             
     - name: Display results for each subscription
       debug:
