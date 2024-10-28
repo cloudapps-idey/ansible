@@ -24,20 +24,20 @@
   tasks:
     - name: Create project
       ansible.builtin.uri:
-      url: "https://192.168.86.29:8443/api/v2/projects/"
-      method: POST
-      body_format: json
-      headers:
-        Content-Type: "application/json"
-        Authorization: "Bearer ZDhlKIi7QWcOpjOPiARUuGzttoB18f"
-      body:
-        name: aap-config
-        scm_type: "git"
-        scm_url: carefirst-github
-        organization: 1
-        credential: https://github.com/cloudapps-idey/ansible.git
-        scm_update_on_launch: true
-      validate_certs: false
+        url: "https://192.168.86.29:8443/api/v2/projects/"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+          Authorization: "Bearer ZDhlKIi7QWcOpjOPiARUuGzttoB18f"
+        body:
+          name: aap-config
+          scm_type: "git"
+          scm_url: https://github.com/cloudapps-idey/ansible.git
+          organization: 1
+          credential: carefirst-github
+          scm_update_on_launch: true
+        validate_certs: false
     - name: Create Credential
       ansible.controller.credential:
         name: azure_credential1
