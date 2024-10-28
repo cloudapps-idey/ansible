@@ -7,8 +7,6 @@
 
   vars_files:
     - subscriptions.yml  # Load subscription IDs from an external file
-
-
   vars:
     # AAP Controller URL
     aap_controller_url: "https://192.168.86.29:8443"
@@ -22,20 +20,14 @@
     azure_client_id: "39dc1694-c978-4611-8682-c8a71853b71e"
     azure_client_secret: "somekey"
     azure_tenant_id: "6dd8b6a1-6749-4de3-a27e-3fd3484c6da7"
-    controller_validate_certs: "{{ vault_controller_validate_certs | default(lookup('env', 'CONTROLLER_VERIFY_SSL')) }}"
+    
   tasks:
-
-    - name: Set API token as a variable
-      set_fact:
-        api_token: PYCNiXtSTxlstK9v3uOoCUOb3VszMN
-      environment:
-        CONTROLLER_VERIFY_SSL: false
-
     - name: Create Credential
       ansible.controller.credential:
         name: azure_credential1
         organization: "{{ organization_id }}"
         credential_type: "Microsoft Azure Resource Manager"
+        state: present
         inputs:
           client: "{{ azure_client_id }}"
           secret: "{{ azure_client_secret }}"
@@ -46,30 +38,6 @@
         validate_certs: false
       register: create_credential_responses1
             
-         
-
-    - name: Create Azure Credential for each Subscription ID in AAP Controller
-      uri:
-        url: "{{ aap_controller_url }}/api/v2/credentials/"
-        method: POST
-        headers:
-          Authorization: "Bearer PYCNiXtSTxlstK9v3uOoCUOb3VszMN "
-          Content-Type: "application/json"
-        body_format: json
-        body:
-          name: "{{ credential_name }} - {{ item }}"
-          description: "{{ credential_description }} for subscription {{ item }}"
-          organization: "{{ organization_id }}"
-          credential_type: 8  # Azure credential type ID
-          inputs:
-            client: "{{ azure_client_id }}"
-            secret: "{{ azure_client_secret }}"
-            subscription: "{{ item }}"
-            tenant: "{{ azure_tenant_id }}"
-        status_code: 201
-      loop: "{{ subscriptions }}"
-      register: create_credential_responses
-
     - name: Display results for each subscription
       debug:
         var: create_credential_responses1.results 
