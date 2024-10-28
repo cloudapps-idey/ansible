@@ -22,6 +22,19 @@
     azure_tenant_id: "6dd8b6a1-6749-4de3-a27e-3fd3484c6da7"
     
   tasks:
+    - name: Generate Controller token
+      ansible.builtin.uri:
+        url: "https://{{ controller_node }}/api/v2/tokens/"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+          Authorization: "Basic {{ ('admin' + 'redhat') | b64encode }}"
+        body:
+          description: "Personal Controller token"
+        validate_certs: false
+      register: controller_token
+    failed_when: "controller_token.status not in [200, 201]"
     - name: Create project
       ansible.builtin.uri:
         url: "https://192.168.86.29:8443/api/v2/projects/"
