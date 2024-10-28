@@ -24,7 +24,7 @@
   tasks:
     - name: Generate Controller token
       ansible.builtin.uri:
-        url: "https://localhost:8443/api/v2/tokens/"
+        url: "https://host1.example.com:8443/api/v2/tokens/"
         method: POST
         body_format: json
         headers:
