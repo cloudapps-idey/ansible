@@ -24,7 +24,7 @@
   tasks:
     - name: Generate Controller token
       ansible.builtin.uri:
-        url: "https://{{ controller_node }}/api/v2/tokens/"
+        url: "https://localhost:8443/api/v2/tokens/"
         method: POST
         body_format: json
         headers:
@@ -34,7 +34,7 @@
           description: "Personal Controller token"
         validate_certs: false
       register: controller_token
-    failed_when: "controller_token.status not in [200, 201]"
+      failed_when: "controller_token.status not in [200, 201]"
     - name: Create project
       ansible.builtin.uri:
         url: "https://192.168.86.29:8443/api/v2/projects/"
